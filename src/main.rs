@@ -7,7 +7,7 @@ use svgmini::defaults::SVGRE;
 
 fn main() {
     let matches = App::new("SVGMini")
-        .version("1.0")
+        .version(clap::crate_version!())
         .author("Praveen Perera <praveen@avencera.com>")
         .about("Minify SVGs inside other files")
         .setting(AppSettings::ArgRequiredElseHelp)
