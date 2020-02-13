@@ -32,7 +32,7 @@ Install from a github release:
 
 or
 
-Download a release directly from github: github.com/avencera/svgmini/releases
+Download a release directly from github: [github.com/avencera/svgmini/releases](https://github.com/avencera/svgmini/releases)
 
 #### Run
 
