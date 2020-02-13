@@ -1,7 +1,9 @@
-use clap::{App, AppSettings, Arg};
+use clap::{App, AppSettings, Arg, ArgMatches};
 use regex::Captures;
 use std::fs;
-use svg_mini::defaults::SVGRE;
+use std::io;
+use std::io::{Error, ErrorKind};
+use svgmini::defaults::SVGRE;
 
 fn main() {
     let matches = App::new("SVGMini")
@@ -19,13 +21,26 @@ fn main() {
         )
         .get_matches();
 
-    let file_path = matches.value_of("FILE").expect("Invalid File Contents");
+    let file_contents = get_and_read_file(&matches);
 
-    let file_contents = fs::read_to_string(file_path).unwrap();
+    match file_contents {
+        Ok((file_path, file_contents)) => {
+            let minified_contents = SVGRE.replace_all(&file_contents, |caps: &Captures| {
+                svgmini::minify_svg(&caps[0]).unwrap_or(caps[0].to_string())
+            });
 
-    let minified_contents = SVGRE.replace_all(&file_contents, |caps: &Captures| {
-        svg_mini::minify_svg(&caps[0])
-    });
+            fs::write(&file_path, minified_contents.as_bytes()).ok();
+        }
 
-    fs::write(file_path, minified_contents.as_bytes()).unwrap()
+        Err(error) => println!("{}", error),
+    }
+}
+
+fn get_and_read_file<'a>(matches: &'a ArgMatches) -> Result<(&'a str, String), io::Error> {
+    let file_path = matches
+        .value_of("FILE")
+        .ok_or(Error::new(ErrorKind::InvalidInput, "Unable to find file"))?;
+
+    let file_contents = fs::read_to_string(file_path)?;
+    Ok((file_path, file_contents))
 }

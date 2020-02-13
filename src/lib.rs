@@ -1,5 +1,6 @@
 use svgcleaner::{self, CleaningOptions};
 use svgdom::{Indent, WriteOptions};
+
 pub mod defaults;
 
 fn cleaning_options() -> CleaningOptions {
@@ -58,12 +59,20 @@ fn write_options() -> WriteOptions {
     }
 }
 
-pub fn minify_svg(svg_text: &str) -> String {
-    let mut doc = svgdom::Document::from_str(svg_text).unwrap();
+pub fn minify_svg(svg_text: &str) -> Result<String, String> {
+    let doc = svgdom::Document::from_str(svg_text).ok();
 
-    let _ = svgcleaner::cleaner::clean_doc(&mut doc, &cleaning_options(), &write_options());
-    let mut buffer: Vec<u8> = vec![];
-    svgcleaner::cleaner::write_buffer(&doc, &write_options(), &mut buffer);
+    match doc {
+        Some(mut doc) => {
+            let _ = svgcleaner::cleaner::clean_doc(&mut doc, &cleaning_options(), &write_options());
+            let mut buffer: Vec<u8> = vec![];
+            svgcleaner::cleaner::write_buffer(&doc, &write_options(), &mut buffer);
 
-    String::from_utf8_lossy(&buffer).to_string()
+            let string = String::from_utf8(buffer).ok();
+
+            string.ok_or("Unable save as UTF8".to_string())
+        }
+
+        None => Err("Unable to parse svg".to_string()),
+    }
 }

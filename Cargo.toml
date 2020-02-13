@@ -1,5 +1,5 @@
 [package]
-name = "svg_mini"
+name = "svgmini"
 version = "0.1.0"
 authors = ["Praveen Perera <praveen@avencera.com>"]
 edition = "2018"
