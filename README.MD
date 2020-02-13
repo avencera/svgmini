@@ -1,6 +1,6 @@
 # SVGMini
 
-## Usage (comin soon...)
+## Usage
 
 ### Plugin
 
