@@ -5,7 +5,7 @@ pub mod defaults;
 pub fn minify_svg(svg_text: &str) -> String {
     let mut doc = svgdom::Document::from_str(svg_text).unwrap();
     let _ = svgcleaner::cleaner::clean_doc(&mut doc, &cleaning_options(), &write_options());
-    format!("{}", doc)
+    doc.to_string().trim().to_string()
 }
 
 fn cleaning_options() -> CleaningOptions {

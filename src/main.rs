@@ -23,11 +23,9 @@ fn main() {
 
     let file_contents = fs::read_to_string(file_path).unwrap();
 
-    let minified_contents = SVGRE
-        .replace_all(&file_contents, |caps: &Captures| {
-            format!("{}", svg_mini::minify_svg(&caps[0]),)
-        })
-        .to_string();
+    let minified_contents = SVGRE.replace_all(&file_contents, |caps: &Captures| {
+        svg_mini::minify_svg(&caps[0])
+    });
 
     fs::write(file_path, minified_contents.as_bytes()).unwrap()
 }

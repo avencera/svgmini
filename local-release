@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cargo build --release;  
+rm  /usr/local/bin/svgmini; 
+ln -s "$(pwd)/target/release/svg_mini" /usr/local/bin/svgmini
