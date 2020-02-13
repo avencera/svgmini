@@ -47,7 +47,7 @@ fn write_options() -> WriteOptions {
     WriteOptions {
         indent: Indent::None,
         join_arc_to_flags: true,
-        use_compact_path_notation: false,
+        use_compact_path_notation: true,
         attributes_indent: Indent::None,
         remove_leading_zero: true,
         use_single_quote: false,
@@ -62,5 +62,8 @@ pub fn minify_svg(svg_text: &str) -> String {
     let mut doc = svgdom::Document::from_str(svg_text).unwrap();
 
     let _ = svgcleaner::cleaner::clean_doc(&mut doc, &cleaning_options(), &write_options());
-    doc.to_string().trim().to_string()
+    let mut buffer: Vec<u8> = vec![];
+    svgcleaner::cleaner::write_buffer(&doc, &write_options(), &mut buffer);
+
+    String::from_utf8_lossy(&buffer).to_string()
 }
