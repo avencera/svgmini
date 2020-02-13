@@ -8,8 +8,29 @@
 2. Run with `SVGMini - Minify SVGs`
 
 ### CLI
-1. Downlown via npm or yarn `npm i -g svgmini` or `yarn global add svgmini`
-2. Run on a file `svgmini path/to_repo/index.html`
+
+#### Install
+Install via npm
+
+`yarn global add svgmini`
+
+or
+
+`npm install -g svgmini`
+
+or
+
+Install from a github release:
+
+`curl -LSfs https://avencera.github.io/svgmini/install.sh | sh -s -- --git avencera/svgmini`
+
+or
+
+Download a release directly from github: github.com/avencera/svgmini/releases
+
+#### Run
+
+Run on a file `svgmini path/to_repo/index.html`
 
 ## What?
 
