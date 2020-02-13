@@ -1,0 +1,31 @@
+{
+  "name": "svgmini",
+  "version": "0.6.4",
+  "description": "CLI for organizing Tailwind CSS classes",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "install": "node ./lib/postinstall.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avencera/svgmini-npm.git"
+  },
+  "keywords": [
+    "svg",
+    "svg minify",
+    "optimize svg",
+    "inline svg",
+    "tailwind",
+    "tailwind css"
+  ],
+  "postinstall": "node ./lib/postinstall.js",
+  "bin": "./bin/svgmini",
+  "author": "Praveen Perera",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avencera/svgmini/issues"
+  },
+  "homepage": "https://github.com/avencera/svgmini#readme",
+  "dependencies": {}
+}
