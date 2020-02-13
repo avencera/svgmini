@@ -1,5 +1,5 @@
 use svgcleaner::{self, CleaningOptions};
-use svgdom::{Indent, WriteOptions};
+use svgdom::{Indent, ParseOptions, WriteOptions};
 
 pub mod defaults;
 
@@ -60,7 +60,14 @@ fn write_options() -> WriteOptions {
 }
 
 pub fn minify_svg(svg_text: &str) -> Result<String, String> {
-    let doc = svgdom::Document::from_str(svg_text).ok();
+    let doc = svgdom::Document::from_str_with_opt(
+        svg_text,
+        &ParseOptions {
+            skip_unresolved_classes: false,
+            ..Default::default()
+        },
+    )
+    .ok();
 
     match doc {
         Some(mut doc) => {
