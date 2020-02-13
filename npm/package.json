@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/avencera/svgmini-npm.git"
+    "url": "git+https://github.com/avencera/svgmini.git"
   },
   "keywords": [
     "svg",
