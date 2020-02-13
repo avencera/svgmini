@@ -4,7 +4,7 @@
 
 ### Plugin
 
-1. Download the VSCode Plugin
+1. Download the [VSCode Plugin](https://marketplace.visualstudio.com/items?itemName=avencera.svgmini)
 2. Run with `SVGMini - Minify SVGs`
 
 ### CLI
