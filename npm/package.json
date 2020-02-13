@@ -1,6 +1,6 @@
 {
   "name": "svgmini",
-  "version": "0.6.4",
+  "version": "0.0.2",
   "description": "CLI for organizing Tailwind CSS classes",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
