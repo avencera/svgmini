@@ -3,7 +3,7 @@
   "displayName": "SVGMini",
   "author": "Praveen Perera <praveen@avencera.com>",
   "publisher": "avencera",
-  "description": "Minify inline SVGs use this to minify SVGs that are in your HTML/JSX files",
+  "description": "Minify inline SVGs, use this to minify SVGs that are in your HTML/JSX files",
   "version": "0.1.0",
   "icon": "icon.png",
   "engines": {
