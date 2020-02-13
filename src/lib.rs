@@ -63,6 +63,7 @@ pub fn minify_svg(svg_text: &str) -> Result<String, String> {
     let doc = svgdom::Document::from_str_with_opt(
         svg_text,
         &ParseOptions {
+            parse_comments: false,
             skip_unresolved_classes: false,
             ..Default::default()
         },
