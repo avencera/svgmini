@@ -1,5 +1,6 @@
 {
   "name": "svgmini",
+  "author": "Praveen Perera <praveen@avencera.com>",
   "version": "0.0.2",
   "description": "Minify inline SVGs use this to minify SVGs that are in your HTML/JSX files",
   "main": "lib/index.js",
@@ -21,7 +22,6 @@
   ],
   "postinstall": "node ./lib/postinstall.js",
   "bin": "./bin/svgmini",
-  "author": "Praveen Perera",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/avencera/svgmini/issues"

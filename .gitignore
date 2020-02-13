@@ -1,1 +1,6 @@
 /target
+**/**/node_modules
+
+.DS_Store
+vscode-extension/out/
+vscode-extension/svgmini-*.vsix
