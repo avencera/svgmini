@@ -1,12 +1,6 @@
 use svgcleaner::{self, CleaningOptions};
-use svgdom::WriteOptions;
+use svgdom::{Indent, WriteOptions};
 pub mod defaults;
-
-pub fn minify_svg(svg_text: &str) -> String {
-    let mut doc = svgdom::Document::from_str(svg_text).unwrap();
-    let _ = svgcleaner::cleaner::clean_doc(&mut doc, &cleaning_options(), &write_options());
-    doc.to_string().trim().to_string()
-}
 
 fn cleaning_options() -> CleaningOptions {
     CleaningOptions {
@@ -26,7 +20,6 @@ fn cleaning_options() -> CleaningOptions {
         remove_invalid_stops: true,
         remove_invisible_elements: true,
         resolve_use: true,
-
         remove_version: true,
         remove_unreferenced_ids: true,
         trim_ids: true,
@@ -52,7 +45,22 @@ fn cleaning_options() -> CleaningOptions {
 
 fn write_options() -> WriteOptions {
     WriteOptions {
+        indent: Indent::None,
+        join_arc_to_flags: true,
+        use_compact_path_notation: false,
+        attributes_indent: Indent::None,
+        remove_leading_zero: true,
         use_single_quote: false,
+        remove_duplicated_path_commands: true,
+        use_implicit_lineto_commands: true,
+        trim_hex_colors: true,
         ..Default::default()
     }
+}
+
+pub fn minify_svg(svg_text: &str) -> String {
+    let mut doc = svgdom::Document::from_str(svg_text).unwrap();
+
+    let _ = svgcleaner::cleaner::clean_doc(&mut doc, &cleaning_options(), &write_options());
+    doc.to_string().trim().to_string();
 }
