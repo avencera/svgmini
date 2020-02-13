@@ -77,7 +77,7 @@ pub fn minify_svg(svg_text: &str) -> Result<String, String> {
 
             let string = String::from_utf8(buffer).ok();
 
-            string.ok_or("Unable save as UTF8".to_string())
+            string.ok_or_else(|| "Unable save as UTF8".to_string())
         }
 
         None => Err("Unable to parse svg".to_string()),
