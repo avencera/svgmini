@@ -1,65 +1,19 @@
-# svgmini README
+# SVGMini
 
-This is the README for your extension "svgmini". After writing up a brief description, we recommend including the following sections.
+## Usage
 
-## Features
+Run `SVGMini: Minify SVGs in Current File` from the command palette.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## What?
 
-For example if there is an image subfolder under your extension project workspace:
+A tool to minify SVGs that are contained in other documents (for example HTML or JSX files).
 
-\!\[feature X\]\(images/feature-x.png\)
+## Why?
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Lots of tools and plugins exist to minify SVGs for example:
 
-## Requirements
+- [SVGO](https://github.com/svg/svgo)
+- [svgcleaner](https://github.com/RazrFalcon/svgcleaner)
+- [SVG VSCode Plugin](https://marketplace.visualstudio.com/items?itemName=jock.svg)
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+However none of them did what I wanted, which was to minify SVGs within my HTML files.

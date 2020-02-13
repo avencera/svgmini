@@ -1,2 +1,6 @@
 /target
 **/**/node_modules
+
+.DS_Store
+vscode-extention/*.vsix
+vscode-extension/out/
