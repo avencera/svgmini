@@ -1,27 +1,33 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
+import { svgminiPath } from "svgmini";
+import { spawn } from "child_process";
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  let disposable = vscode.commands.registerTextEditorCommand(
+    "svgmini.minifyInFile",
+    (editor, _edit) => {
+      let path = editor.document.fileName;
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "svgmini" is now active!');
+      let svgminiProc = spawn(svgminiPath, [path]);
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('extension.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
+      svgminiProc.stdout.on(
+        "data",
+        data =>
+          data &&
+          data.toString() !== "" &&
+          console.log("svgmini stdout:\n", data.toString())
+      );
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World!');
-	});
+      svgminiProc.stderr.on("data", data => {
+        if (data && data.toString() !== "") {
+          console.log("svgmini stderr:\n", data.toString());
+          vscode.window.showErrorMessage(`SVGMini error: ${data.toString()}`);
+        }
+      });
+    }
+  );
 
-	context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable);
 }
 
-// this method is called when your extension is deactivated
 export function deactivate() {}
