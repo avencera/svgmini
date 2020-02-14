@@ -1,4 +1,4 @@
-use svgcleaner::{self};
+use svgcleaner;
 
 pub mod defaults;
 

@@ -1,14 +1,10 @@
-# SVGMini
-
-## Usage
+# Usage
 
 Run `SVGMini: Minify SVGs in Current File` from the command palette.
 
 ---
 
 <img src="https://github.com/avencera/svgmini/blob/master/explainer.gif?raw=true" alt="Explainer" width="750px">
-
----
 
 ## What?
 
@@ -23,3 +19,7 @@ Lots of tools and plugins exist to minify SVGs for example:
 - [SVG VSCode Plugin](https://marketplace.visualstudio.com/items?itemName=jock.svg)
 
 However none of them did what I wanted, which was to minify SVGs within my HTML files.
+
+## Issues or Suggestions?
+
+Post in the GitHub Repo: [http://github.com/avencera/svgmini](http://github.com/avencera/svgmini)
