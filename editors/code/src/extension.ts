@@ -2,19 +2,17 @@ import * as vscode from "vscode";
 import { svgminiPath } from "svgmini";
 import { spawn } from "child_process";
 
-const config = vscode.workspace.getConfiguration();
-
-const shouldReplaceFillConfig = config.get("svgmini.replaceFill");
-
-const shouldReplaceFill =
-  typeof shouldReplaceFillConfig === "boolean"
-    ? shouldReplaceFillConfig
-    : false;
-
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerTextEditorCommand(
     "svgmini.minifyInFile",
     (editor, _edit) => {
+      const config = vscode.workspace.getConfiguration();
+      const shouldReplaceFillConfig = config.get("svgmini.replaceFill");
+      const shouldReplaceFill =
+        typeof shouldReplaceFillConfig === "boolean"
+          ? shouldReplaceFillConfig
+          : false;
+
       let path = editor.document.fileName;
 
       const args = [path, shouldReplaceFill ? "--replace-fill" : ""].filter(
