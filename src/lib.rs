@@ -3,6 +3,7 @@ use svgcleaner;
 use svgdom;
 
 pub mod defaults;
+pub mod options;
 #[derive(Debug, Fail)]
 pub enum MinifyError {
     #[fail(display = "Unable to parse SVG")]
