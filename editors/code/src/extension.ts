@@ -6,9 +6,20 @@ export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerTextEditorCommand(
     "svgmini.minifyInFile",
     (editor, _edit) => {
+      const config = vscode.workspace.getConfiguration();
+      const shouldReplaceFillConfig = config.get("svgmini.replaceFill");
+      const shouldReplaceFill =
+        typeof shouldReplaceFillConfig === "boolean"
+          ? shouldReplaceFillConfig
+          : false;
+
       let path = editor.document.fileName;
 
-      let svgminiProc = spawn(svgminiPath, [path]);
+      const args = [path, shouldReplaceFill ? "--replace-fill" : ""].filter(
+        arg => arg !== ""
+      );
+
+      let svgminiProc = spawn(svgminiPath, args);
 
       svgminiProc.stdout.on(
         "data",

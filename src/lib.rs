@@ -1,8 +1,13 @@
+pub mod defaults;
+pub mod options;
+
+use defaults::FILLRE;
 use failure::{Error, Fail};
+use options::Options;
+use regex::Captures;
 use svgcleaner;
 use svgdom;
 
-pub mod defaults;
 #[derive(Debug, Fail)]
 pub enum MinifyError {
     #[fail(display = "Unable to parse SVG")]
@@ -17,7 +22,7 @@ impl From<std::string::FromUtf8Error> for MinifyError {
     }
 }
 
-pub fn minify_svg(svg_text: &str) -> Result<String, Error> {
+pub fn minify_svg(svg_text: &str, options: &Options) -> Result<String, Error> {
     let mut doc = svgdom::Document::from_str_with_opt(svg_text, &defaults::parse_options())
         .map_err(|_error| MinifyError::UnableToParseSVG)?;
 
@@ -26,8 +31,22 @@ pub fn minify_svg(svg_text: &str) -> Result<String, Error> {
         &defaults::cleaning_options(),
         &defaults::write_options(),
     );
+
     let mut buffer: Vec<u8> = vec![];
     svgcleaner::cleaner::write_buffer(&doc, &defaults::write_options(), &mut buffer);
+    let svg_string = String::from_utf8(buffer)?;
 
-    Ok(String::from_utf8(buffer)?)
+    if options.replace_fill {
+        Ok(FILLRE
+            .replace_all(&svg_string, |caps: &Captures| {
+                if &caps[1] == "none" || &caps[1] == "NONE" {
+                    caps[0].to_string()
+                } else {
+                    r##"fill="currentColor""##.to_string()
+                }
+            })
+            .to_string())
+    } else {
+        Ok(svg_string)
+    }
 }
