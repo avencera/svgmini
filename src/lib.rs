@@ -38,7 +38,13 @@ pub fn minify_svg(svg_text: &str, options: &Options) -> Result<String, Error> {
 
     if options.replace_fill {
         Ok(FILLRE
-            .replace_all(&svg_string, |_caps: &Captures| r##"fill="currentColor"##)
+            .replace_all(&svg_string, |caps: &Captures| {
+                if &caps[1] == "none" || &caps[1] == "NONE" {
+                    caps[0].to_string()
+                } else {
+                    r##"fill="currentColor""##.to_string()
+                }
+            })
             .to_string())
     } else {
         Ok(svg_string)

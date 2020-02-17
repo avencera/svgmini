@@ -8,7 +8,7 @@ lazy_static! {
 }
 
 lazy_static! {
-    pub static ref FILLRE: Regex = Regex::new(r#"fill="(?!none)(?!NONE)+(.*?)""#).unwrap();
+    pub static ref FILLRE: Regex = Regex::new(r#"fill="(.*?)""#).unwrap();
 }
 
 pub fn cleaning_options() -> CleaningOptions {
