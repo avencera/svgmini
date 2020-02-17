@@ -26,21 +26,21 @@
         "command": "svgmini.minifyInFile",
         "title": "SVGMini: Minify SVGs in Current File"
       }
-    ]
-  },
-  "configuration": [
-    {
-      "title": "SVGMini",
-      "properties": {
-        "svgmini.replaceFill": {
-          "type": "boolean",
-          "default": false,
-          "description": "A flag that controls if all 'fill' attributes will be replaced with 'currentColor'",
-          "scope": "window"
+    ],
+    "configuration": [
+      {
+        "title": "SVGMini",
+        "properties": {
+          "svgmini.replaceFill": {
+            "type": "boolean",
+            "default": false,
+            "description": "A flag that controls if all 'fill' attributes will be replaced with 'currentColor'",
+            "scope": "window"
+          }
         }
       }
-    }
-  ],
+    ]
+  },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
     "compile": "tsc -p ./",
