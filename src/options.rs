@@ -27,8 +27,8 @@ impl Options {
         let (file_path, file_contents) = get_and_read_file(matches)?;
 
         Ok(Options {
-            file_path: file_path,
-            file_contents: file_contents,
+            file_path,
+            file_contents,
             replace_fill: matches.is_present("replace-fill"),
         })
     }
