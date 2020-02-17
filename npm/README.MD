@@ -12,9 +12,17 @@ Run `SVGMini: Minify SVGs in Current File` from the command palette.
 
 <img src="https://github.com/avencera/svgmini/blob/master/explainer.gif?raw=true" alt="Explainer" width="750px">
 
-### CLI
+### Config
 
-#### Install
+#### `svgmini.replaceFill`
+
+When set SVGMini will replace all `fill` attributes in SVGs with `currentColor`. Defaults to false.
+
+`"svgmini.replaceFill": true`
+
+## CLI
+
+### Install
 
 Install via npm
 
@@ -34,9 +42,15 @@ or
 
 Download a release directly from github: [github.com/avencera/svgmini/releases](https://github.com/avencera/svgmini/releases)
 
-#### Run
+### Run
 
 Run on a file `svgmini path/to_repo/index.html`
+
+### Config
+
+`--replace-fill`
+
+When set SVGMini will replace all `fill` attributes in SVGs with `currentColor`. Defaults to false.
 
 ## What?
 
