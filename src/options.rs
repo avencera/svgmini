@@ -29,7 +29,7 @@ impl Options {
         Ok(Options {
             file_path: file_path,
             file_contents: file_contents,
-            replace_fill: false,
+            replace_fill: matches.is_present("replace-fill"),
         })
     }
 }

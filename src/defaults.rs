@@ -7,6 +7,10 @@ lazy_static! {
     pub static ref SVGRE: Regex = Regex::new(r#"<svg[^>]*>((.|\n)*?)</svg>"#).unwrap();
 }
 
+lazy_static! {
+    pub static ref FILLRE: Regex = Regex::new(r#"fill="(?!none)(?!NONE)+(.*?)""#).unwrap();
+}
+
 pub fn cleaning_options() -> CleaningOptions {
     CleaningOptions {
         remove_unused_defs: true,
