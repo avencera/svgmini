@@ -1,3 +1,6 @@
+# SVGMini [![Build Status Travis](https://travis-ci.org/avencera/svgmini.svg?branch=master)](https://travis-ci.org/avencera/svgmini) [![Build Status Appveyor](https://ci.appveyor.com/api/projects/status/at89lbs7n35wqy96?svg=true)](https://ci.appveyor.com/project/praveenperera/svgmini) [![npm version](https://badge.fury.io/js/svgmini.svg)](https://badge.fury.io/js/svgmini) [![vscode marketplace extention](https://vsmarketplacebadge.apphb.com/version/avencera.svgmini.svg)](https://marketplace.visualstudio.com/items?itemName=avencera.svgmini)
+
+
 # Usage
 
 Run `SVGMini: Minify SVGs in Current File` from the command palette.
