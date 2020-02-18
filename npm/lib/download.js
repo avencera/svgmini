@@ -55,6 +55,8 @@ function downloadWin(url, dest, opts) {
 
 function download(_url, dest, opts) {
   if (isWindows) {
+    // This alternative strategy shouldn't be necessary but sometimes on Windows the file does not get closed,
+    // so unzipping it fails, and I don't know why.
     return downloadWin(_url, dest, opts);
   }
 
@@ -204,7 +206,7 @@ function unzipWindows(zipPath, destinationDir) {
 
 // Handle whitespace in filepath as powershell split's path with whitespaces
 function sanitizePathForPowershell(path) {
-  path = path.replace(" ", "` "); // replace whitespace with "` " as solution provided here https://stackoverflow.com/a/18537344/7374562
+  path = path.replace(/ /g, "` "); // replace whitespace with "` " as solution provided here https://stackoverflow.com/a/18537344/7374562
   return path;
 }
 
