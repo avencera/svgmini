@@ -1296,10 +1296,10 @@ supports-color@^5.3.0:
   dependencies:
     has-flag "^3.0.0"
 
-svgmini@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/svgmini/-/svgmini-0.1.0.tgz#37044f0acde1401c7a595091fdaae1c1e9563a3d"
-  integrity sha512-OeyDZ+ikdrmlqZDKVvyVneARePAxI2oEMvBq6/G6rLmV2OzDSPIf7C1O0QZLAjd9xWAnQwrHdG+0qhnrQo4E3g==
+svgmini@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/svgmini/-/svgmini-0.2.0.tgz#dc7ed31707f1f5cf42e46a3670272875df011646"
+  integrity sha512-ym2oGJ5w38fMQiYtcH16tg1twjtnYpwg9vQ1IIi0ZGkd1kx5Ad6l31u1Ut4P0n/e+6W+kqK4SrbCEUdF3ar8AQ==
 
 table@^5.2.3:
   version "5.4.6"
