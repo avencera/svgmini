@@ -12,6 +12,8 @@ Run `SVGMini: Minify SVGs in Current File` from the command palette.
 
 When set SVGMini will replace all `fill` attributes in SVGs with `currentColor`. Defaults to false.
 
+`"svgmini.replaceFill": true`
+
 ## What?
 
 A tool to minify SVGs that are contained in other documents (for example HTML or JSX files).
