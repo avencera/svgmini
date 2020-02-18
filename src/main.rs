@@ -1,4 +1,5 @@
-use clap::{App, AppSettings, Arg};
+use clap::{App, AppSettings, Arg, ArgMatches};
+use failure::Error;
 use regex::Captures;
 use std::fs;
 use svgmini::defaults::SVGRE;
@@ -26,16 +27,23 @@ fn main() {
         )
         .get_matches();
 
-    let options = Options::new_from_matches(&matches);
-    match options {
-        Ok(options) => {
-            let minified_contents = SVGRE.replace_all(&options.file_contents, |caps: &Captures| {
-                svgmini::minify_svg(&caps[0], &options).unwrap_or_else(|_| caps[0].to_string())
-            });
-
-            fs::write(&options.file_path, minified_contents.as_bytes()).ok();
+    std::process::exit(match run(&matches) {
+        Ok(_) => 0,
+        Err(err) => {
+            eprintln!("error: {:?}", err);
+            1
         }
+    });
+}
 
-        Err(error) => println!("{}", error),
-    }
+fn run(matches: &ArgMatches) -> Result<(), Error> {
+    let options = Options::new_from_matches(&matches)?;
+
+    let minified_contents = SVGRE.replace_all(&options.file_contents, |caps: &Captures| {
+        svgmini::minify_svg(&caps[0], &options).unwrap_or_else(|_| caps[0].to_string())
+    });
+
+    fs::write(&options.file_path, minified_contents.as_bytes())?;
+
+    Ok(())
 }
