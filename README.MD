@@ -48,9 +48,11 @@ Run on a file `svgmini path/to_repo/index.html`
 
 ### Config
 
-`--replace-fill`
+#### `--replace-fill`
 
 When set SVGMini will replace all `fill` attributes in SVGs with `currentColor`. Defaults to false.
+
+`svgmini path/to_repo/index.html --replace-fill`
 
 ---
 
