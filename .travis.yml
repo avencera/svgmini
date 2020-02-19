@@ -124,4 +124,5 @@ branches:
 
 notifications:
   email:
-    on_success: always
+    on_success: change # default: always
+    on_failure: always # default: always
